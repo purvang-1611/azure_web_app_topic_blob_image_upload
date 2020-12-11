@@ -1,0 +1,43 @@
+<h1>Product List</h1><a href="/">Return home</a>
+<style>
+table, th, td {
+  padding: 10px;
+  font-size: 20px;
+}
+table {
+  border-spacing: 15px;
+}
+</style>
+<form action='/sendorder/receive/' method="GET">
+  <h3>Click For List!</h3>
+  <div class="upload-container"><input type="submit" value="Received Order"></div>
+</form>
+
+<table>
+    <th>Index</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Available Quantity</th>
+    <th>Image</th>
+    <th>Action</th>
+{{#each this.message}}
+  <tr >
+      <td>{{itemid}}</td>
+      <td>{{itemname}}</td>
+      <td>{{itemprice}}</td>
+      <td>{{itemqty}}</td>
+      <td><img src="{{itemimg}}" height="200" width="200"></td>
+      <td><form action="/sendorder" method="POST">
+      <input type="number" id="pincode" name="pincode" placeholder="pincode">
+      <input type="text" id="itemName" name="itemName" value="{{itemname}}" hidden="true">
+      <input type="number" id="itemQty" name="itemQty" value="{{itemqty}}" hidden="true">
+      <input type="number" id="itemPrice" name="itemPrice" value="{{itemprice}}" hidden="true">
+      <input type="text" id="itemImg" name="itemImg" value="{{itemimg}}" hidden="true">
+      <br>
+      <input type="submit" value="Buy Now">
+      </form></td>
+  </tr>
+{{/each}}    
+</table>
+
+
